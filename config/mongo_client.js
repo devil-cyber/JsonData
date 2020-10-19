@@ -9,5 +9,9 @@ db.once("open", function () {
 
 
 
+var obj = db.collection('movies').find();
+obj.then((err, data) => {
+    console.log(data);
+})
 
 module.exports = db;
