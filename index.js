@@ -4,12 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const port = process.env.PORT;
 
-server.get('/', (req, res) => {
-    res.status(200).json({
-        "message": "Serever started ",
-        "goal": 'start your work'
-    })
-})
+server.use('/', require('./routes'));
 server.use('/', (req, res, next) => {
     res.status(404).json({
         'error': 'this is error 404'
@@ -18,6 +13,9 @@ server.use('/', (req, res, next) => {
 
 
 server.listen(port, (error => {
-    if (error) { console.log(`Error occured in making the server`) }
-    else { console.log(`Serever is running at port : ${port}`) }
+    if (error) {
+        console.log(`Error occured in making the server`)
+    } else {
+        console.log(`Serever is running at port : ${port}`)
+    }
 }))
