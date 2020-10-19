@@ -17,5 +17,5 @@ server.use('/', (req, res, next) => {
 
 server.listen(port, (error => {
     if (error) { console.log(`Error occured in making the server`) }
-    else { console.log(`Serever is running at port${port}`) }
+    else { console.log(`Serever is running at port : ${port}`) }
 }))
