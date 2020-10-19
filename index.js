@@ -3,6 +3,7 @@ const server = express();
 const dotenv = require('dotenv');
 dotenv.config();
 const port = process.env.PORT;
+server.use(express.json({ extended: false }));
 
 server.use('/', require('./routes'));
 server.use('/', (req, res, next) => {
