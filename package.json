@@ -1,0 +1,21 @@
+{
+  "name": "free_api",
+  "version": "1.0.0",
+  "description": "Free api for the testing of code and varous stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "Free",
+    "NodeJs",
+    "Mongodb",
+    "Imdb"
+  ],
+  "author": "Manikant Kumar",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.10.9"
+  }
+}
