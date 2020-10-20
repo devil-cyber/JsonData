@@ -1,28 +1,26 @@
-const data = require('./data.json');
-const { home } = require('./home_controller');
+const db = require("../config/mongo_client");
+
 module.exports.data = function (req, res) {
-    if (parseInt(req.params.value) === 1) {
-        return res.status(200).json({
-            'data': data[0]
-        })
-    }
-    else if (parseInt(req.params.value) > 1 & parseInt(req.params.value) <= 500) {
-        new_data = [];
-        for (var i = 0; i <= parseInt(req.params.value); i++) {
-            new_data.push(data[i]);
+    try {
+        if (req.params.value === "One" || req.params.value === "one") {
+            db.collection("customers").findOne({}, (err, data) => {
+                return res.json(data);
+            });
+        } else if (req.params.value === "All") {
+            const all_data = [];
+            const collection = db.collection("customers");
+            const cursor = collection.find({}).toArray((err, data) => {
+                return res.json(data);
+            });
+        } else {
+            return res.json(
+                "There is some error with using the API | For more details see the documents once agian | Thank You!"
+            );
         }
-        return res.status(200).json(new_data);
+    } catch (err) {
+        console.log(
+            "Error occured from api_controller=>[data_controller]",
+            err.message
+        );
     }
-    else if (req.params.value === 'All') {
-        return res.status(200).json(data);
-    }
-    else {
-        return res.status(200).json({
-            messaage: 'Something error occured with the Api Check the Documention for more details'
-        })
-    }
-
-
-
-
-}
+};
