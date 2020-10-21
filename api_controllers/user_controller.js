@@ -1,8 +1,8 @@
 const db = require("../config/mongo_client");
-module.exports.user = async function (req, res) {
+module.exports.user = function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
-            await db.collection("customers").findOne({}, (err, data) => {
+            db.collection("customers").findOne({}, (err, data) => {
                 if (err) {
                     return res.ststus(200).json(err.message);
                 }
@@ -10,7 +10,7 @@ module.exports.user = async function (req, res) {
             });
         } else if (req.params.value === "All") {
             const collection = db.collection("customers");
-            const cursor = await collection.find({}).toArray((err, data) => {
+            const cursor = collection.find({}).toArray((err, data) => {
                 if (err) {
                     return res.json(err.message);
                 }

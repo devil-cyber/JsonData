@@ -1,8 +1,8 @@
 const db = require("../config/mongo_client");
-module.exports.post = async function (req, res) {
+module.exports.post = function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
-            await db.collection("post").findOne({}, (err, data) => {
+            db.collection("post").findOne({}, (err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
                 } else {
@@ -11,7 +11,7 @@ module.exports.post = async function (req, res) {
             });
         } else if (req.params.value === "All") {
             const collection = db.collection("post");
-            const cursor = await collection.find({}).toArray((err, data) => {
+            const cursor = collection.find({}).toArray((err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
                 } else {
