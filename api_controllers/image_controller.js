@@ -1,8 +1,8 @@
 const db = require('../config/mongo_client');
-module.exports.image = function (req, res) {
+module.exports.image = async function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
-            db.collection("images").findOne({}, (err, data) => {
+            await db.collection("images").findOne({}, (err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
                 }
@@ -12,9 +12,9 @@ module.exports.image = function (req, res) {
 
             });
         } else if (req.params.value === "All") {
-            const all_data = [];
+
             const collection = db.collection("images");
-            const cursor = collection.find({}).toArray((err, data) => {
+            const cursor = await collection.find({}).toArray((err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
                 }

@@ -1,27 +1,22 @@
-const db = require('../config/mongo_client');
-module.exports.comment = function (req, res) {
+const db = require("../config/mongo_client");
+module.exports.comment = async function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
-            db.collection("comments").findOne({}, (err, data) => {
+            await db.collection("comments").findOne({}, (err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
-                }
-                else {
+                } else {
                     return res.status(200).json(data);
                 }
-
             });
         } else if (req.params.value === "All") {
-            const all_data = [];
             const collection = db.collection("comments");
-            const cursor = collection.find({}).toArray((err, data) => {
+            const cursor = await collection.find({}).toArray((err, data) => {
                 if (err) {
-                    return res.status(200).json(err.message)
-                }
-                else {
+                    return res.status(200).json(err.message);
+                } else {
                     return res.status(200).json(data);
                 }
-
             });
         } else {
             return res.json(
@@ -34,4 +29,4 @@ module.exports.comment = function (req, res) {
             err.message
         );
     }
-}
+};
