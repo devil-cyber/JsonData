@@ -4,7 +4,7 @@ module.exports.user = function (req, res) {
         if (req.params.value === "One" || req.params.value === "one") {
             db.collection("customers").findOne({}, (err, data) => {
                 if (err) {
-                    return res.ststus(200).json(err.message);
+                    return res.status(200).json(err.message);
                 }
                 return res.json(data);
             });
@@ -14,7 +14,7 @@ module.exports.user = function (req, res) {
                 if (err) {
                     return res.json(err.message);
                 }
-                return res.ststus(200).json(data);
+                return res.status(200).json(data);
             });
         } else {
             return res.json(
