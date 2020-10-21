@@ -1,6 +1,5 @@
-const db = require("../config/mongo_client");
-
-module.exports.data = function (req, res) {
+const db = require('../config/mongo_client');
+module.exports.user = function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
             db.collection("customers").findOne({}, (err, data) => {
@@ -19,8 +18,8 @@ module.exports.data = function (req, res) {
         }
     } catch (err) {
         console.log(
-            "Error occured from api_controller=>[data_controller]",
+            "Error occured from api_controller=>[post_controller]",
             err.message
         );
     }
-};
+}
