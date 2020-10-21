@@ -7,6 +7,8 @@ router.get('/', HomeController.home);
 router.use('/user', require('./user'));
 router.use('/post', require('./post'));
 router.use('/image', require('./image'));
+router.use('/todo', require('./todo'));
+router.use('/comment', require('./comment'));
 
 
 module.exports = router;

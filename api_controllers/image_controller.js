@@ -3,13 +3,25 @@ module.exports.image = function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
             db.collection("images").findOne({}, (err, data) => {
-                return res.json(data);
+                if (err) {
+                    return res.status(200).json(err.message);
+                }
+                else {
+                    return res.status(200).json(data);
+                }
+
             });
         } else if (req.params.value === "All") {
             const all_data = [];
             const collection = db.collection("images");
             const cursor = collection.find({}).toArray((err, data) => {
-                return res.json(data);
+                if (err) {
+                    return res.status(200).json(err.message);
+                }
+                else {
+                    return res.status(200).json(data);
+                }
+
             });
         } else {
             return res.json(
@@ -18,7 +30,7 @@ module.exports.image = function (req, res) {
         }
     } catch (err) {
         console.log(
-            "Error occured from api_controller=>[post_controller]",
+            "Error occured from api_controller=>[image_controller]",
             err.message
         );
     }

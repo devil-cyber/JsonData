@@ -1,25 +1,25 @@
 const db = require('../config/mongo_client');
-module.exports.post = function (req, res) {
+module.exports.comment = function (req, res) {
     try {
         if (req.params.value === "One" || req.params.value === "one") {
-            db.collection("post").findOne({}, (err, data) => {
+            db.collection("comments").findOne({}, (err, data) => {
                 if (err) {
                     return res.status(200).json(err.message);
                 }
                 else {
-                    return res.json(data);
+                    return res.status(200).json(data);
                 }
 
             });
         } else if (req.params.value === "All") {
             const all_data = [];
-            const collection = db.collection("post");
+            const collection = db.collection("comments");
             const cursor = collection.find({}).toArray((err, data) => {
                 if (err) {
-                    return res.status(200).json(err.message);
+                    return res.status(200).json(err.message)
                 }
                 else {
-                    return res.ststus(200).json(data);
+                    return res.status(200).json(data);
                 }
 
             });
@@ -30,7 +30,7 @@ module.exports.post = function (req, res) {
         }
     } catch (err) {
         console.log(
-            "Error occured from api_controller=>[post_controller]",
+            "Error occured from api_controller=>[comment_controller]",
             err.message
         );
     }
