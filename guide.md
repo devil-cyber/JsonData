@@ -1,7 +1,7 @@
 ## Guide
 - Below you'll find examples using Fetch API but you can JSONPlaceholder with any other language.
 
-- You can copy paste the code in your browser console to quickly test [Josn Data]().
+- You can copy paste the code in your browser console to quickly test [Josn Data](https://jsondata-4a1d1.web.app/).
 
 ## Getting a resource
 ```javascript
