@@ -19,7 +19,7 @@ fetch('https://babbaer.herokuapp.com/post/All')
   
 ```
 👇 Output :
-```json
+```javascript
 // Output for One post
 {
   
@@ -58,7 +58,7 @@ fetch('https://babbaer.herokuapp.com/post/create', {
 
 ```
 👇 Output :
-```json
+```javascript
 {
   id: 101,
   title: 'mani',
