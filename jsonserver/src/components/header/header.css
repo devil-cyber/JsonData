@@ -1,0 +1,22 @@
+.navColor{
+    background-color:#553c9a;
+    color:greenyellow;
+}
+nav h3:hover{
+  color:orange;
+  cursor:pointer;
+}
+.github{
+    text-decoration:none;
+    color:greenyellow;
+}
+.document{
+    text-decoration:none;
+    color:greenyellow;
+}
+.github:hover{
+    color:orange;
+}
+.document:hover{
+    color:orange;
+}
